@@ -1,0 +1,30 @@
+import sqlite3
+
+DB_FILE = 'users.db'
+
+def init_db2():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    shopname TEXT,
+                    username TEXT,
+                    address TEXT,
+                    pincode TEXT,
+                    state TEXT,
+                    mobile TEXT,
+                    gst_number TEXT UNIQUE,
+                    
+                 )''')
+    conn.commit()
+    conn.close()
+
+def save_user2(data):
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute(
+        "INSERT INTO users (username, address, pincode, state, mobile, door_number, color) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        data
+    )
+    conn.commit()
+    conn.close()
