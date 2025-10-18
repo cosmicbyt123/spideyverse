@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request ,url_for,redirect,jsonify
+from flask import Flask,send_file, render_template, request ,url_for,redirect,jsonify
 import sqlite3
 from buyerdata import init_db, save_user
 from sellerdata import init_db2, save_user2
@@ -10,6 +10,7 @@ from google.generativeai import types
 from database import init_db3, save_user3
 
 app = Flask(__name__)
+import io
 
 init_db()   
 init_db2()
@@ -69,6 +70,9 @@ def submitseller():
 
 @app.route('/sellerplat')
 def platform():
+    with sqlite3.connect("data.db") as conn:
+     rows = conn.execute("SELECT id, description FROM uploads").fetchall()
+    return render_template('seller_platform.html', rows=rows)
     return render_template('seller_platform.html')
 
 @app.route('/Ai', methods=['POST'])
@@ -93,17 +97,25 @@ def mencat():
 def seller():
     return render_template('sellerlogin.html')
 
+#
+
 @app.route('/addtodb', methods=['POST'])
 def addtodb():
-    image = request.files['image']       # get uploaded file
-    desc = request.form['description']   # get text field
-    data = (image, desc)       
-    save_user3(data)
-    return redirect('/sellerplat')
-def view():
+    desc = request.form['description']
+    img = request.files['image'].read()
     with sqlite3.connect("data.db") as conn:
-        rows = conn.execute("SELECT id, description FROM uploads").fetchall()
-    return render_template('seller_platform.html', rows=rows) 
+        conn.execute("INSERT INTO uploads (description, image) VALUES (?, ?)", (desc, img))
+    return redirect('/sellerplat')
+
+
+@app.route('/image/<int:id>')
+def image(id):
+    with sqlite3.connect("data.db") as conn:
+        row = conn.execute("SELECT image, description FROM uploads WHERE id=?", (id,)).fetchone()
+    if row:
+        image_bytes, description = row
+        return send_file(io.BytesIO(image_bytes), mimetype='image/jpeg')
+    return redirect('/sellerplat')
 
 
 
