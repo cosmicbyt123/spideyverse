@@ -13,7 +13,8 @@ def init_db2():
                     pincode TEXT,
                     state TEXT,
                     mobile TEXT,
-                    gst_number TEXT UNIQUE,
+                    door_number TEXT,
+                    gstnumber TEXT UNIQUE
                     
                  )''')
     conn.commit()
@@ -23,7 +24,7 @@ def save_user2(data):
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute(
-        "INSERT INTO users (username, address, pincode, state, mobile, door_number, color) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO users (username, address, pincode, state, mobile, door_number,gstnumber,shopname) VALUES (?, ?, ?, ?, ?, ?, ?,?)",
         data
     )
     conn.commit()

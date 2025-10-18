@@ -5,8 +5,11 @@ from buyerdata import init_db, save_user
 from sellerdata import init_db2, save_user2
 app = Flask(__name__)
 
-init_db()
+init_db()   
 init_db2()
+
+
+
 
 
 @app.route('/')
@@ -16,10 +19,12 @@ def home():
 
 @app.route('/login')
 def login():
+    
     return render_template('login.html')
 
+
 @app.route('/submituser', methods=['POST'])
-def submit():
+def submituser():
     data = (
         request.form['username'],
         request.form['address'],
@@ -29,11 +34,11 @@ def submit():
         request.form['door_number'],
         request.form['color']
     )
-    save_user(data)
+    save_user2(data)
     return redirect('/mencat')
 
-@app.route('/submitbuyer', methods=['POST'])
-def submit():
+@app.route('/submitseller', methods=['POST'])
+def submitseller():
     data = (
         request.form['username'],
         request.form['address'],
@@ -42,10 +47,10 @@ def submit():
         request.form['mobile'],
         request.form['door_number'],
         request.form['shopname'],
-        request.form['gst_number']
+        request.form['gstnumber']
     )
     save_user2(data)
-    return redirect('/landingpage')
+    return redirect('/Ai')
 
 
 
@@ -56,6 +61,7 @@ def ai():
 
 @app.route('/buyer')
 def buyer():
+    
     return render_template('buyer.html')
 
 @app.route('/map')

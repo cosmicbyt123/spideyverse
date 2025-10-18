@@ -2,7 +2,7 @@ import sqlite3
 
 DB_FILE = 'buyer.db'
 
-def init_db2():
+def init_db():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS users (
@@ -13,13 +13,13 @@ def init_db2():
                     state TEXT,
                     mobile TEXT,
                     door_number TEXT,
-                    shopname TEXT,
+                    shopname TEXT
                     
                     )''')
     conn.commit()
     conn.close()
 
-def save_user2(data):
+def save_user(data):
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     c.execute(
