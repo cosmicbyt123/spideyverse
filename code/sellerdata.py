@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_FILE = 'users.db'
+DB_FILE = 'seller.db'
 
 def init_db2():
     conn = sqlite3.connect(DB_FILE)
@@ -14,7 +14,7 @@ def init_db2():
                     state TEXT,
                     mobile TEXT,
                     door_number TEXT,
-                    gstnumber TEXT UNIQUE
+                    gstnumber TEXT 
                     
                  )''')
     conn.commit()
