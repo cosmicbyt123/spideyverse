@@ -6,6 +6,12 @@
     <title>Nearcart - User Registration (Enhanced Glass)</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+      .test a {
+  color: whitesmoke;
+  font-size: 24px; /* increase or decrease as you want */
+  text-decoration: none; /* optional: removes underline */
+}
+
         :root {
             --color-secondary-white: rgba(240, 230, 200, 0.5); 
             --color-text-dark: #333333;
@@ -277,8 +283,11 @@
 
             <button type="submit">Submit</button>
         </form>
+        <div class="test">
+            <a href="{{ url_for('seller') }}">If seller, click this to make a seller account</a>
 
-        <a href="{{ url_for('seller') }}">If seller, click this to make a seller account</a>
+
+        </div>
     </div>
 </body>
 </html>

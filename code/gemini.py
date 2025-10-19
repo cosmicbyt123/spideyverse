@@ -4,7 +4,7 @@ from PIL import Image
 
 
 # Pass your API key explicitly as a string
-api_key = "AIzaSyB9pF3je4dUwnyyQcbgC_krTRhU6uVlco0"
+api_key = "keep yours api keys"
 client = genai.Client(api_key=api_key)
 image = Image.open("D:\START_UP_CODE\GEMINI_API_CODE\download.jpg")
 

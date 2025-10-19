@@ -3,9 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NovaThread - The Art of Effortless Style</title>
+    
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #f5f5dc;
+            --color-accent: #b08d57;
+            --color-text-light: #4f4f4f;
+
+            --font-heading: 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Arial', sans-serif;
+
+            --spacing-extra-large: 6rem;
+            --spacing-large: 4rem;
+            --spacing-medium: 2rem;
+            --spacing-small: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            height: 85vh;
+            
+            /* UPDATED: Use a local file path here. Ensure hero_background.jpg is in the same folder as this HTML file. */
+            background-image: url('hero_background.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            
+            filter: grayscale(10%) contrast(105%);
+            opacity: 0.95;
+        }
+        
+        .hero-content {
+            z-index: 10;
+            margin: 0 auto;
+            max-width: 900px;
+            padding: var(--spacing-medium) 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+            margin-bottom: var(--spacing-small);
+            padding-top: var(--spacing-large);
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-large);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-medium);
+            padding-bottom: var(--spacing-extra-large);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.1rem;
+            transition: background-color 0.3s, color 0.3s;
+            border: 2px solid var(--color-primary);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .link-secondary {
+            text-align: center;
+            color: var(--color-text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--color-text-light);
+            transition: color 0.3s, border-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .link-secondary:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        @media (max-width: 768px) {
+            .hero-image-container {
+                height: 50vh;
+            }
+            .hero-content {
+                padding: var(--spacing-medium);
+                max-width: 90%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.1rem;
+                padding-top: var(--spacing-medium);
+            }
+
+            .hero-content h2 {
+                font-size: 1.1rem;
+                margin-bottom: var(--spacing-medium);
+            }
+            
+            .cta-group {
+                flex-direction: column;
+                gap: var(--spacing-small);
+                padding-bottom: var(--spacing-large);
+            }
+            
+            .btn, .link-secondary {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>this is the landing page</h1>
-  <a href="{{ url_for('login') }}">Login</a></body>
-</html>
+    <header class="hero-section">
+        <div class="hero-image-container">
+            
+        </div>
+        
+        <div class="hero-content">
+            <h1>The Art of Effortless Style</h1>
+            
+            <h2>Curated essentials designed for comfort, built to last. Your modern wardrobe starts here.</h2>
+            
+            <div class="cta-group">
+                <a href="{{ url_for('login') }}" class="btn btn-primary">login</a>
+                
+                
+            </div>
+        </div>
+    </header>
+</body>
+</html> 
