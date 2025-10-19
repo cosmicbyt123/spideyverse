@@ -31,6 +31,9 @@ genai.configure(api_key="AIzaSyB9pF3je4dUwnyyQcbgC_krTRhU6uVlco0")
 def home():
     return render_template('landingpage.html')
 
+@app.route('/product')
+def product():
+    return render_template('products.html')
 
 @app.route('/login')
 def login():
@@ -79,6 +82,9 @@ def platform():
 def ai():
     return render_template('AI.html')
 
+@app.route('/rebuyer')
+def rebuyer():
+    return render_template('user_real.html')
 
 @app.route('/buyer')
 def buyer():
@@ -113,9 +119,20 @@ def image(id):
     with sqlite3.connect("data.db") as conn:
         row = conn.execute("SELECT image, description FROM uploads WHERE id=?", (id,)).fetchone()
     if row:
+
         image_bytes, description = row
         return send_file(io.BytesIO(image_bytes), mimetype='image/jpeg')
     return redirect('/sellerplat')
+@app.route('/product', methods=['GET'])
+def get_products():
+
+    with sqlite3.connect("data.db") as conn:
+        rows = conn.execute("SELECT id, description FROM uploads").fetchall()
+    products = [{'id': row[0], 'description': row[1]} for row in rows]
+    print(products)
+    return render_template('products.html', products=products)
+
+
 
 
 

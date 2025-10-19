@@ -6,7 +6,8 @@ def init_db3():
         conn.execute('''CREATE TABLE IF NOT EXISTS uploads (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         description TEXT,
-                        image BLOB)''')
+                        image BLOB,
+                     cost INTEGER)''')
         
 
 

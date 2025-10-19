@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrolling Banner + Product Grid</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+  }
+   
+ 
+  /* === Auto Scrolling Banner === */
+  .scroll-box {
+
+    width: 50%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 70px;
+    overflow: hidden;
+    border-radius: 120 0 20px 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .scroll-content {
+    display: flex;
+    animation: scroll-left 25s linear infinite;
+    width: max-content;
+  }
+
+  .scroll-content img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .scroll-box:hover .scroll-content {
+    animation-play-state: paused;
+  }
+
+  /* === Product Grid Section === */
+  .products-section {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+  }
+
+  .products-title {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 1.1em;
+    color: #333;
+    margin: 6px 0;
+  }
+
+  .product-info p {
+    font-weight: bold;
+    color: #e63946;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+   <nav style="background-color: #333; height: 55px; width: 100%;"></nav>
+
+
+
+<!-- 🔹 Product Cards Section -->
+<section class="products-section">
+  <h2 class="products-title">Featured New Arrivals 🌟</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (5).jpeg') }}" alt="Product 1">
+      <div class="product-info">
+        <h3>Leather Jacket</h3>
+        <p>$189.99</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (6).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (7).jpeg') }}" alt="Product 3">
+      <div class="product-info">
+        <h3>Slim Fit Trousers</h3>
+        <p>$89.00</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (8).jpeg') }}" alt="Product 4">
+      <div class="product-info">
+        <h3>Urban Sneakers</h3>
+        <p>$75.99</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (22).jpeg') }}" alt="Product 5">
+      <div class="product-info">
+        <h3>Casual Hoodie</h3>
+        <p>$49.99</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (10).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (11).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (12).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (25).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (14).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (15).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (16).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (17).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (18).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (19).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (20).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (21).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (22).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (23).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+
+     <div class="product-card">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (24).jpeg') }}" alt="Product 2">
+      <div class="product-info">
+        <h3>Flowy Maxi Dress</h3>
+        <p>$59.50</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

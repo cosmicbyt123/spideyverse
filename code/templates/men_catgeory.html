@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Style Session</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': 'rgb(215, 199, 167)', 
+                        'secondary-bg': '#cc9d45ce',
+                        'text-primary': '#000000',
+                        'text-secondary': '#333333',
+                        'accent-dark': '#0f4c81',
+                        'hover-dark': '#0c3d69',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: rgb(215, 199, 167); 
+            color: var(--text-primary); 
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            width: 120%;
+            height:110%;
+            background-image: url('file:///C:/Users/deepu/Downloads/5men.png'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            opacity: 0.85; 
+
+            border-radius: 30px; 
+            
+            z-index: -1; 
+        }
+
+        header h1, header p {
+            color: #ffffff !important; 
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9); 
+            position: relative; 
+            z-index: 10;
+        }
+        
+        main h2 {
+             color: #ffe09e !important; 
+             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+             border-color: rgba(24, 15, 15, 0.5) !important; 
+             position: relative; 
+             z-index: 10;
+        }
+
+       
+        @media (max-width: 768px) {
+            body::before {
+                width: 95%;
+                border-radius: 15px; 
+            }
+        }
+        
+        .category-tab {
+            color: var(--accent-dark) !important;
+        }
+
+        .category-tab.bg-accent-dark {
+            color: #e7e7e7 !important;
+        }
+
+        .scroll-hidden::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hidden {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-primary font-sans min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-10 pt-4">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-accent-dark mb-2">
+                Style Session
+            </h1>
+            <p class="text-text-secondary text-xl md:text-2xl font-light">
+                Curated Looks for the Modern Man
+            </p>
+        </header>
+
+        <nav class="sticky top-0 z-10 bg-secondary-bg/95 backdrop-blur-sm shadow-2xl rounded-xl mb-8 py-1">
+            <div class="flex flex-nowrap overflow-x-auto scroll-hidden space-x-3 md:space-x-4 text-sm md:text-base px-3">
+                <button data-category="vintage" class="category-tab py-4 px-8 whitespace-nowrap rounded-lg transition-all duration-300 font-medium" onclick="showCategory('vintage')">Vintage</button>
+                <button data-category="old-money" class="category-tab py-4 px-8 whitespace-nowrap rounded-lg transition-all duration-300 text-text-primary hover:bg-hover-dark/10 hover:rounded-full" onclick="showCategory('old-money')">Old Money</button>
+                <button data-category="formal" class="category-tab py-4 px-8 whitespace-nowrap rounded-lg transition-all duration-300 text-text-primary hover:bg-hover-dark/10 hover:rounded-full" onclick="showCategory('formal')">Formal</button>
+                <button data-category="sports-wear" class="category-tab py-4 px-8 whitespace-nowrap rounded-lg transition-all duration-300 text-text-primary hover:bg-hover-dark/10 hover:rounded-full" onclick="showCategory('sports-wear')">Sports Wear</button>
+                <button data-category="casual-wear" class="category-tab py-4 px-8 whitespace-nowrap rounded-lg transition-all duration-300 text-text-primary hover:bg-hover-dark/10 hover:rounded-full" onclick="showCategory('casual-wear')">Casual Wear</button>
+            </div>
+        </nav>
+
+        <main id="content-container">
+
+            <section id="vintage" class="category-content grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="lg:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 border-b border-text-secondary pb-2">The Vintage Revival</h2>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=1950s+Aesthetic" alt="Vintage Look 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mid-Century Cool</h3>
+                        <p class="text-text-secondary text-sm">Think high-waisted trousers, classic bomber jackets, and chunky knitwear. Focus on rich textures like tweed and wool for an authentic feel.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=70s+Dandy+Look" alt="Vintage Look 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">70s Dandy Style</h3>
+                        <p class="text-text-secondary text-sm">Wide collars, patterned shirts, and flared corduroy pants. Accessories are key: large sunglasses and layered gold chains complete the look.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Worker+Uniform" alt="Vintage Look 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Classic Workwear</h3>
+                        <p class="text-text-secondary text-sm">Durable denim, chore coats, and high-quality leather boots. It's about rugged durability and timeless utility.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="old-money" class="category-content hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="lg:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 border-b border-text-secondary pb-2">Quiet Luxury: The Old Money Look</h2>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Cashmere+Sweater" alt="Old Money Look 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">The Weekend Retreat</h3>
+                        <p class="text-text-secondary text-sm">Focus on high-quality basics: perfectly tailored chinos, cashmere crewnecks, and simple leather loafers. Logo-free is the rule.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Linen+Suit" alt="Old Money Look 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Summer by the Coast</h3>
+                        <p class="text-text-secondary text-sm">Lightweight linen suits in cream or sky blue, worn slightly deconstructed. Subtle stripes and well-polished boat shoes are essential.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="formal" class="category-content hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="lg:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 border-b border-text-secondary pb-2">Sharp Suiting: The Formal Wardrobe</h2>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Black+Tie+Tuxedo" alt="Formal Look 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Black Tie Elegance</h3>
+                        <p class="text-text-secondary text-sm">A classic tuxedo with a peak lapel, white dress shirt, black bow tie, and patent leather oxfords. Perfection is in the details.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Business+Suit" alt="Formal Look 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Modern Business Wear</h3>
+                        <p class="text-text-secondary text-sm">A slim-fit wool suit in navy or charcoal, a crisp spread-collar shirt, and a subtle silk tie. Maintain a sharp, contemporary silhouette.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sports-wear" class="category-content hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="lg:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 border-b border-text-secondary pb-2">Active Performance: Sports Wear</h2>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Running+Gear" alt="Sports Wear Look 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">High-Intensity Training</h3>
+                        <p class="text-text-secondary text-sm">Moisture-wicking fabric, compression layers, and performance running shoes. Prioritize breathability and minimal seams.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Technical+Jacket" alt="Sports Wear Look 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Technical Outerwear</h3>
+                        <p class="text-text-secondary text-sm">Waterproof shells, lightweight puffer vests, and durable hiking boots. Blending function with modern, urban aesthetics.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="casual-wear" class="category-content hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="lg:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 border-b border-text-secondary pb-2">Relaxed & Refined: Casual Wear</h2>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Denim+Jacket+Outfit" alt="Casual Wear Look 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Elevated Weekend</h3>
+                        <p class="text-text-secondary text-sm">A quality denim jacket over a minimalist t-shirt, paired with dark selvedge jeans or tapered trousers and clean sneakers.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-secondary-bg rounded-xl overflow-hidden shadow-2xl hover:shadow-accent-dark/50 transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/dddddd/333333?text=Layered+Knitwear" alt="Casual Wear Look 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Smart Layering</h3>
+                        <p class="text-text-secondary text-sm">The art of layering: thin knitwear or a henley under an unstructured blazer or overshirt. Comfortable, yet always presentable.</p>
+                        <a href="#" class="inline-block mt-4 text-accent-dark hover:text-text-primary transition-colors text-sm font-medium">Explore Details &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <button id="scrollTopButton" onclick="scrollToTop()" class="fixed bottom-6 right-6 p-3 bg-accent-dark text-secondary-bg rounded-full shadow-2xl transition-opacity duration-300 opacity-0 invisible hover:bg-hover-dark focus:outline-none focus:ring-4 focus:ring-accent-dark/50">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+        </svg>
+    </button>
+
+    <script>
+        function showCategory(categoryId) {
+            const contents = document.querySelectorAll('.category-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-accent-dark', 'text-secondary-bg', 'shadow-lg', 'rounded-full');
+                tab.classList.add('text-text-primary', 'hover:bg-hover-dark/10', 'hover:rounded-full', 'rounded-lg');
+            });
+
+            const selectedContent = document.getElementById(categoryId);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+            }
+
+            const selectedTab = document.querySelector(`.category-tab[data-category="${categoryId}"]`);
+            if (selectedTab) {
+                selectedTab.classList.add('bg-accent-dark', 'text-secondary-bg', 'shadow-lg', 'rounded-full');
+                selectedTab.classList.remove('text-text-primary', 'hover:bg-hover-dark/10', 'rounded-lg');
+            }
+        }
+        
+        const scrollThreshold = 300;
+        const scrollTopButton = document.getElementById('scrollTopButton');
+
+        function toggleScrollTopButton() {
+            if (window.scrollY > scrollThreshold) {
+                scrollTopButton.classList.remove('opacity-0', 'invisible');
+                scrollTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                scrollTopButton.classList.remove('opacity-100', 'visible');
+                scrollTopButton.classList.add('opacity-0', 'invisible');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        window.onload = () => {
+            showCategory('vintage');
+            toggleScrollTopButton();
+        };
+
+        window.onscroll = () => {
+            toggleScrollTopButton();
+        };
+    </script>
+</body>
+</html>

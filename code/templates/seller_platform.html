@@ -1,47 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sales & Image Upload Dashboard</title>
 <style>
-.box {
-  width: 400px;
-  height: auto;
-  border: 2px solid #333;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Body & Background */
+  body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #2c2d3a;
+    background: #f7f8fc;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://images.unsplash.com/photo-1520975854420-5d6d1c4a1f89?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: -1;
+    filter: brightness(135%) contrast(120%) grayscale(20%);
+    transition: opacity 0.5s ease;
+  }
+
+  /* Container & Layout */
+  .container {
+    max-width: 960px;
+    margin: 50px auto 70px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 48px;
+    padding: 0 24px;
+  }
+
+  /* Card style */
+  .card {
+    background: linear-gradient(145deg, #ffffff, #e8eaf6);
+    border-radius: 28px;
+    border-width: 10px;
+  
+    padding: 50px 50px 48px;
+    box-shadow:
+      0 10px 30px rgba(99, 110, 250, 0.18),
+      0 2px 8px rgba(60, 66, 87, 0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+      0 20px 45px rgba(99, 110, 250, 0.45),
+      0 8px 20px rgba(60, 66, 87, 0.22);
+  }
+
+  /* Headings */
+  h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #4a54f1;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(74,84,241,0.3);
+  }
+
+  /* Sales Metrics List */
+  .sales-metrics ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    color: #5a5d7a;
+  }
+  .sales-metrics ul li {
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+    background: #f3f6ff;
+    border-radius: 16px;
+    padding: 16px 26px;
+    box-shadow: inset 0 0 10px rgba(74, 84, 241, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+    transition: background 0.35s ease;
+    cursor: default;
+  }
+  .sales-metrics ul li:hover {
+    background: #d6dcff;
+  }
+
+  /* Upload Form */
+  .upload-image form {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+  }
+  input[type="file"] {
+    font-size: 1.1rem;
+    border-radius: 18px;
+    border: 2px solid #a3a8ff;
+    padding: 12px 18px;
+    background: #f9fbff;
+    cursor: pointer;
+    width: 100%;
+    max-width: 340px;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: inset 0 2px 5px rgba(163, 168, 255, 0.2);
+  }
+  input[type="file"]:hover {
+    border-color: #4a54f1;
+    box-shadow: 0 0 12px rgba(74, 84, 241, 0.5);
+  }
+  input[type="text"] {
+    width: 100%;
+    max-width: 340px;
+    padding: 14px 22px;
+    border-radius: 24px;
+    border: 2px solid #a3a8ff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: #f9fbff;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: inset 0 2px 8px rgba(163, 168, 255, 0.25);
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #4a54f1;
+    box-shadow: 0 0 18px rgba(74, 84, 241, 0.7);
+    background: #ffffff;
+  }
+
+  /* Upload Button */
+  button.upload-btn {
+    background: linear-gradient(135deg, #4a54f1, #7c7cf0);
+    border: none;
+    padding: 16px 38px;
+    border-radius: 36px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 25px rgba(74, 84, 241, 0.65);
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+  }
+  button.upload-btn:hover {
+    background: linear-gradient(135deg, #6671f8, #a29aff);
+    box-shadow: 0 12px 35px rgba(74, 84, 241, 0.85);
+  }
+
+  /* Bottom Section */
+  .bottom-section {
+    grid-column: 1 / -1;
+    background: linear-gradient(145deg, #ffffff, #e8eaf6);
+    border-radius: 28px;
+    padding: 36px 36px 48px;
+    box-shadow:
+      0 12px 40px rgba(74, 84, 241, 0.4),
+      0 8px 25px rgba(60, 66, 87, 0.18);
+    margin-top: 40px;
+    transition: box-shadow 0.35s ease;
+  }
+  .bottom-section:hover {
+    box-shadow:
+      0 18px 55px rgba(74, 84, 241, 0.6),
+      0 14px 38px rgba(60, 66, 87, 0.28);
+  }
+
+  /* Images List */
+  .images-list {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: center;
+  }
+  .image-item {
+    width: 170px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #565a7a;
+    font-weight: 600;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  .image-item p {
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+  }
+  .image-item img {
+    max-width: 100%;
+    border-radius: 22px;
+    box-shadow:
+      0 12px 30px rgba(74, 84, 241, 0.3),
+      0 6px 15px rgba(60, 66, 87, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 0 1.5px rgba(74, 84, 241, 0.3));
+  }
+  .image-item img:hover {
+    transform: scale(1.12) rotate(1.5deg);
+    box-shadow:
+      0 20px 50px rgba(74, 84, 241, 0.55),
+      0 14px 32px rgba(60, 66, 87, 0.35);
+    filter: drop-shadow(0 0 4px rgba(74, 84, 241, 0.5));
+  }
+  .image-item:hover {
+    color: #4a54f1;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+    .card {
+      padding: 28px 20px 36px;
+    }
+    button.upload-btn {
+      font-size: 1.05rem;
+      padding: 14px 28px;
+    }
+    .image-item {
+      width: 140px;
+      font-size: 0.95rem;
+    }
+  }
 </style>
 </head>
 <body>
+  <div class="container">
+    <section class="card sales-metrics">
+      <h2>📊 Sales Metrics</h2>
+      <ul>
+        <li>📈 Sales in 2 days</li>
+        <li>👥 People visited</li>
+        <li>💰 Revenue</li>
+        <li>📉 Growth</li>
+      </ul>
+    </section>
+    <section class="card upload-image">
+      <h2>⬆ Upload Image</h2>
+      <form id="uploadForm" autocomplete="off">
+        <input type="file" id="imageFile" accept="image/*" />
+        <input type="text" id="description" placeholder="Enter description" />
+        <button type="submit" class="upload-btn">📤 Click to Upload</button>
+      </form>
+    </section>
+    <section class="bottom-section">
+      <h2>🖼 Images from the Database</h2>
+      <div class="images-list" id="imagesList">
+        <!-- Images will be appended here by JS -->
+      </div>
+    </section>
+  </div>
 
-<div class="box">
-  <ul>
-    <li>Sales in 2 days</li>
-    <li>People visited</li>
-    <li>Revenue</li>
-    <li>Growth</li>
-  </ul>
-</div>
+<script>
+  const imageDB = [];
 
-<form action="/addtodb" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" accept="image/*" required><br><br>
-  <input type="text" name="description" placeholder="Enter description" required><br><br>
-  <button type="submit">Click to Upload</button>
-</form>
+  const uploadForm = document.getElementById('uploadForm');
+  const imagesList = document.getElementById('imagesList');
 
+  function renderImages() {
+    imagesList.innerHTML = '';
+    imageDB.forEach(({id, desc, src}) => {
+      const div = document.createElement('div');
+      div.className = 'image-item';
+      div.innerHTML = `
+        <p>${desc}</p>
+        <img src="${src}" alt="Image ${id}" />
+      `;
+      imagesList.appendChild(div);
+    });
+  }
 
-<div class="image">
-  <h1>Images from the database</h1>
-  {% for id, desc in rows %}
-    <p>{{ desc }}</p>
-    <img src="{{ url_for('image', id=id) }}" width="200">
-    <hr>
-  {% endfor %}
-</div>
+  uploadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fileInput = document.getElementById('imageFile');
+    const descInput = document.getElementById('description');
+    if (!fileInput.files.length) {
+      alert('Please choose a file to upload');
+      return;
+    }
+    if (!descInput.value.trim()) {
+      alert('Please enter a description');
+      return;
+    }
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const newImage = {
+        id: imageDB.length + 1,
+        desc: descInput.value.trim(),
+        src: event.target.result
+      };
+      imageDB.push(newImage);
+      renderImages();
+      uploadForm.reset();
+    };
+    reader.readAsDataURL(file);
+  });
 
- 
-</div>
-</div>
+  renderImages();
+</script>
 </body>
 </html>

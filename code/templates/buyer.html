@@ -11,12 +11,15 @@
     margin: 0;
     padding: 0;
   }
-
+   
+ 
   /* === Auto Scrolling Banner === */
   .scroll-box {
+
     width: 50%;
     height: 400px;
     margin: 0 auto;
+    margin-top: 70px;
     overflow: hidden;
     border-radius: 120 0 20px 20px;
     background-color: white;
@@ -108,19 +111,21 @@
 </head>
 <body>
 
+   <nav style="background-color: #333; height: 55px; width: 100%;"></nav>
+
 <!-- 🔹 Auto Scrolling Banner -->
 <div class="scroll-box">
   <div class="scroll-content">
-    <img src="{{ url_for('static', filename='images/MEN_WEAR/CASUAL/1.jpeg') }}" alt="Banner 1">
-    <img src="C:\Users\WASIM\Downloads\nearcart catalogue\MEN'S WEAR\CASUAL\1e3fed6f-211b-4f35-8afc-f8664728e73d.jpeg" alt="Banner 2">
-    <img src="https://via.placeholder.com/350x300/60a5fa/ffffff?text=Banner+3" alt="Banner 3">
-    <img src="https://via.placeholder.com/350x300/93c5fd/ffffff?text=Banner+4" alt="Banner 4">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (1).jpeg') }}" alt="Banner 1">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (2).jpeg') }}" alt="Banner 2">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (3).jpeg') }}" alt="Banner 3">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (4).jpeg') }}" alt="Banner 4">
 
     <!-- Duplicate set for infinite loop -->
-    <img src="{{ url_for('static', filename='images/MEN_WEAR/CASUAL/1.jpeg') }}" alt="Banner 1">
-    <img src="C:\Users\WASIM\Downloads\nearcart catalogue\MEN'S WEAR\CASUAL\1e3fed6f-211b-4f35-8afc-f8664728e73d.jpeg" alt="Banner 2">
-    <img src="https://via.placeholder.com/350x300/60a5fa/ffffff?text=Banner+3" alt="Banner 3">
-    <img src="https://via.placeholder.com/350x300/93c5fd/ffffff?text=Banner+4" alt="Banner 4">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (1).jpeg') }}" alt="Banner 1">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (2).jpeg') }}" alt="Banner 2">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (3).jpeg') }}" alt="Banner 3">
+    <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (4).jpeg') }}" alt="Banner 4">
   </div>
 </div>
 
@@ -129,35 +134,35 @@
   <h2 class="products-title">Featured New Arrivals 🌟</h2>
   <div class="product-grid">
     <div class="product-card">
-      <img src="WhatsApp Image 2025-10-18 at 17.07.14_0269fec4.jpg" alt="Product 1">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (5).jpeg') }}" alt="Product 1">
       <div class="product-info">
         <h3>Leather Jacket</h3>
         <p>$189.99</p>
       </div>
     </div>
     <div class="product-card">
-      <img src="https://via.placeholder.com/260x250/3b82f6/ffffff?text=Product+2" alt="Product 2">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (6).jpeg') }}" alt="Product 2">
       <div class="product-info">
         <h3>Flowy Maxi Dress</h3>
         <p>$59.50</p>
       </div>
     </div>
     <div class="product-card">
-      <img src="https://via.placeholder.com/260x250/60a5fa/ffffff?text=Product+3" alt="Product 3">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (7).jpeg') }}" alt="Product 3">
       <div class="product-info">
         <h3>Slim Fit Trousers</h3>
         <p>$89.00</p>
       </div>
     </div>
     <div class="product-card">
-      <img src="https://via.placeholder.com/260x250/93c5fd/ffffff?text=Product+4" alt="Product 4">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (8).jpeg') }}" alt="Product 4">
       <div class="product-info">
         <h3>Urban Sneakers</h3>
         <p>$75.99</p>
       </div>
     </div>
     <div class="product-card">
-      <img src="https://via.placeholder.com/260x250/2563eb/ffffff?text=Product+5" alt="Product 5">
+      <img src="{{ url_for('static', filename='images/mens_wear/casual/2 (9).jpeg') }}" alt="Product 5">
       <div class="product-info">
         <h3>Casual Hoodie</h3>
         <p>$49.99</p>
